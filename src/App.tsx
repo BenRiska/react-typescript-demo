@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef } from "react";
+import "./App.css";
+import TextField from "./TextField";
 
-function App() {
+const App: React.FC = () => {
+  const [count, setCount] = useState<number | null>(5);
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input ref={inputRef} />
+      <TextField
+        text={"Hi"}
+        person={{ firstName: "Bobs", lastName: "Burgers" }}
+        fn={() => console.log("Hi")}
+      />
     </div>
   );
-}
+};
 
 export default App;
